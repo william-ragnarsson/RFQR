@@ -4,51 +4,81 @@ import {
   Background,
   BackgroundVariant,
   Controls,
-  MarkerType,
   ReactFlow,
   useNodesInitialized,
   useNodesState,
   useReactFlow,
   useStore,
-  type Edge,
   type NodeTypes,
 } from "@xyflow/react";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { LIVE_RUN_PREFIX, type LiveEvent, type LiveStatus } from "@/lib/live-types";
 import { DEMO_SCENARIOS, approveMockReply, simulateRun } from "@/lib/mock-run";
-import { NODE_IDS, type NodeId, type NodeStatus, type RunState } from "@/lib/types";
+import { NODE_IDS, type NodeId, type RunState } from "@/lib/types";
 import { DbNode, type DbNodeType } from "./DbNode";
 import { DetailPanel } from "./DetailPanel";
-import { RunContext, nodeState, type Selection } from "./run-context";
+import { MERGE, SPLIT, buildEdges } from "./edges";
+import { JunctionNode, type JunctionNodeType } from "./JunctionNode";
+import { RoadmapNode, type RoadmapNodeType } from "./RoadmapNode";
+import { RunContext, type RoadmapId, type Selection } from "./run-context";
 import { TopBar } from "./TopBar";
 import { WorkflowNode, type WorkflowNodeType } from "./WorkflowNode";
 
-const nodeTypes: NodeTypes = { workflow: WorkflowNode, db: DbNode };
-
-const POSITIONS: Record<NodeId, { x: number; y: number }> = {
-  gmail: { x: 0, y: 150 },
-  text: { x: 260, y: 30 },
-  pdf: { x: 260, y: 270 },
-  template: { x: 540, y: 150 },
-  inventory: { x: 800, y: 150 },
-  reply: { x: 1060, y: 150 },
+const nodeTypes: NodeTypes = {
+  workflow: WorkflowNode,
+  db: DbNode,
+  roadmap: RoadmapNode,
+  junction: JunctionNode,
 };
 
-const INITIAL_NODES: (WorkflowNodeType | DbNodeType)[] = [
-  ...NODE_IDS.map(
-    (id): WorkflowNodeType => ({ id, type: "workflow", position: POSITIONS[id], data: {} }),
-  ),
-  // 64px circle centred under the 96px inventory square.
-  { id: "db", type: "db", position: { x: 816, y: 400 }, data: {} },
-];
+type CanvasNode = WorkflowNodeType | DbNodeType | RoadmapNodeType | JunctionNodeType;
 
-const FLOW: [NodeId, NodeId][] = [
-  ["gmail", "text"],
-  ["gmail", "pdf"],
-  ["text", "template"],
-  ["pdf", "template"],
-  ["template", "inventory"],
-  ["inventory", "reply"],
+// Nodes are placed by their centre; y = 0 is the line through the merge point,
+// the order form, the inventory check and the reply.
+const at = (size: number, x: number, y: number) => ({ x: x - size / 2, y: y - size / 2 });
+
+const live = (id: NodeId, x: number, y: number): WorkflowNodeType => ({
+  id,
+  type: "workflow",
+  position: at(96, x, y),
+  data: {},
+});
+
+const soon = (id: RoadmapId, x: number, y: number): RoadmapNodeType => ({
+  id,
+  type: "roadmap",
+  position: at(64, x, y),
+  data: {},
+});
+
+const junction = (id: string, x: number): JunctionNodeType => ({
+  id,
+  type: "junction",
+  position: at(10, x, 0),
+  data: {},
+  draggable: false,
+  selectable: false,
+  focusable: false,
+});
+
+const INITIAL_NODES: CanvasNode[] = [
+  // Inputs: only Gmail is live; the others show the roadmap.
+  soon("slack", 48, -250),
+  live("gmail", 48, -80),
+  soon("teams", 48, 100),
+  soon("upload", 48, 260),
+  // Every input merges into one line, which branches out to the readers again.
+  junction(MERGE, 210),
+  junction(SPLIT, 290),
+  soon("excel", 440, -290),
+  live("text", 440, -110),
+  live("pdf", 440, 110),
+  soon("image", 440, 300),
+  live("template", 680, 0),
+  live("inventory", 940, 0),
+  live("reply", 1200, 0),
+  // 64px circle centred under the inventory square.
+  { id: "db", type: "db", position: at(64, 940, 234), data: {} },
 ];
 
 const FIT_OPTIONS = { padding: 0.25 };
@@ -65,47 +95,6 @@ function FitOnResize() {
   }, [ready, width, height, fitView]);
 
   return null;
-}
-
-const INDIGO = "#6366f1";
-const DARK = "#6b7280";
-const LIGHT = "#d1d5db";
-const FINISHED: NodeStatus[] = ["done", "warning", "awaiting", "error"];
-
-function buildEdges(run: RunState | null): Edge[] {
-  const edges: Edge[] = FLOW.map(([source, target]) => {
-    const from = nodeState(run, source).status;
-    const to = nodeState(run, target).status;
-    const running = to === "running";
-    const skipped = from === "skipped" || to === "skipped";
-    const color = running ? INDIGO : !skipped && FINISHED.includes(to) ? DARK : LIGHT;
-    return {
-      id: `${source}-${target}`,
-      source,
-      target,
-      animated: running,
-      style: {
-        stroke: color,
-        strokeWidth: 1.5,
-        ...(skipped ? { strokeDasharray: "4 4" } : {}),
-      },
-      markerEnd: { type: MarkerType.ArrowClosed, width: 16, height: 16, color },
-    };
-  });
-
-  const inventoryRunning = nodeState(run, "inventory").status === "running";
-  edges.push({
-    id: "db-inventory",
-    source: "db",
-    sourceHandle: "db",
-    target: "inventory",
-    targetHandle: "db",
-    type: "straight",
-    animated: inventoryRunning,
-    style: { stroke: inventoryRunning ? INDIGO : "#9ca3af", strokeWidth: 1.5, strokeDasharray: "5 5" },
-  });
-
-  return edges;
 }
 
 export function WorkflowCanvas() {
@@ -210,7 +199,9 @@ export function WorkflowCanvas() {
               edges={edges}
               nodeTypes={nodeTypes}
               onNodesChange={onNodesChange}
-              onNodeClick={(_, node) => setSelected(node.id as Selection)}
+              onNodeClick={(_, node) => {
+                if (node.type !== "junction") setSelected(node.id as Selection);
+              }}
               onPaneClick={() => setSelected(null)}
               fitView
               fitViewOptions={FIT_OPTIONS}

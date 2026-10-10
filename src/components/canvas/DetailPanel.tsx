@@ -6,9 +6,10 @@ import { EmailDetail } from "./details/EmailDetail";
 import { ExtractionDetail } from "./details/ExtractionDetail";
 import { InventoryDetail, InventorySkipped } from "./details/InventoryDetail";
 import { ReplyDetail } from "./details/ReplyDetail";
+import { RoadmapDetail } from "./details/RoadmapDetail";
 import { StockDetail } from "./details/StockDetail";
 import { TemplateDetail } from "./details/TemplateDetail";
-import { NODE_META, NodeIcon, isNodeId } from "./node-meta";
+import { NODE_META, NodeIcon, isNodeId, isRoadmapId } from "./node-meta";
 import { nodeState, type Selection } from "./run-context";
 import { ModelPill, StatusPill } from "./status";
 
@@ -40,6 +41,11 @@ export function DetailPanel({ selected, run, onClose, onApprove, live, sendError
           <div className="mt-1 flex flex-wrap items-center gap-1.5">
             {state && <StatusPill status={state.status} />}
             {model && <ModelPill model={model} size="md" />}
+            {isRoadmapId(selected) && (
+              <span className="rounded-full bg-gray-100 px-2 py-0.5 text-xs font-medium text-gray-600">
+                Coming soon
+              </span>
+            )}
             {!state && <span className="text-xs text-gray-500">{meta.subtitle}</span>}
           </div>
         </div>
@@ -75,6 +81,7 @@ function PanelBody({
   if (selected === "db") {
     return <StockDetail matchedSku={run?.inventory?.match?.sku ?? null} />;
   }
+  if (isRoadmapId(selected)) return <RoadmapDetail id={selected} />;
 
   const { status } = nodeState(run, selected);
 

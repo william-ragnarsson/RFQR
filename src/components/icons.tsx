@@ -51,6 +51,44 @@ export function GmailIcon({ size = 24, ...props }: IconProps) {
   );
 }
 
+/** Four-colour Slack hash mark. */
+export function SlackIcon({ size = 24, ...props }: IconProps) {
+  return (
+    <svg viewBox="0 0 122.8 122.8" width={size} height={size} aria-hidden="true" {...props}>
+      <path
+        fill="#e01e5a"
+        d="M25.8 77.6c0 7.1-5.8 12.9-12.9 12.9S0 84.7 0 77.6s5.8-12.9 12.9-12.9h12.9v12.9zm6.5 0c0-7.1 5.8-12.9 12.9-12.9s12.9 5.8 12.9 12.9v32.3c0 7.1-5.8 12.9-12.9 12.9s-12.9-5.8-12.9-12.9V77.6z"
+      />
+      <path
+        fill="#36c5f0"
+        d="M45.2 25.8c-7.1 0-12.9-5.8-12.9-12.9S38.1 0 45.2 0s12.9 5.8 12.9 12.9v12.9H45.2zm0 6.5c7.1 0 12.9 5.8 12.9 12.9s-5.8 12.9-12.9 12.9H12.9C5.8 58.1 0 52.3 0 45.2s5.8-12.9 12.9-12.9h32.3z"
+      />
+      <path
+        fill="#2eb67d"
+        d="M97 45.2c0-7.1 5.8-12.9 12.9-12.9s12.9 5.8 12.9 12.9-5.8 12.9-12.9 12.9H97V45.2zm-6.5 0c0 7.1-5.8 12.9-12.9 12.9s-12.9-5.8-12.9-12.9V12.9C64.7 5.8 70.5 0 77.6 0s12.9 5.8 12.9 12.9v32.3z"
+      />
+      <path
+        fill="#ecb22e"
+        d="M77.6 97c7.1 0 12.9 5.8 12.9 12.9s-5.8 12.9-12.9 12.9-12.9-5.8-12.9-12.9V97h12.9zm0-6.5c-7.1 0-12.9-5.8-12.9-12.9s5.8-12.9 12.9-12.9h32.3c7.1 0 12.9 5.8 12.9 12.9s-5.8 12.9-12.9 12.9H77.6z"
+      />
+    </svg>
+  );
+}
+
+/** Microsoft Teams mark, simplified: the "T" tile in front of two people. */
+export function TeamsIcon({ size = 24, ...props }: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" width={size} height={size} aria-hidden="true" {...props}>
+      <circle cx="19.6" cy="6.4" r="2.1" fill="#5059c9" />
+      <path fill="#5059c9" d="M16 9.6h6a1.6 1.6 0 0 1 1.6 1.6v4.6a3.6 3.6 0 0 1-3.6 3.6h-4z" />
+      <circle cx="13.2" cy="5" r="3" fill="#7b83eb" />
+      <path fill="#7b83eb" d="M8.4 9.6h9a1.2 1.2 0 0 1 1.2 1.2v5.4a5 5 0 0 1-5 5h-.2a5 5 0 0 1-5-5z" />
+      <rect x="0.6" y="6.4" width="12.4" height="12.4" rx="1.6" fill="#4b53bc" />
+      <path fill="#ffffff" d="M3.6 9.3h6.4v1.6H7.6v5.6H6v-5.6H3.6z" />
+    </svg>
+  );
+}
+
 /** OpenAI logo in black, Claude logo in orange. */
 export function ModelLogo({ provider, size = 14 }: { provider: ModelProvider; size?: number }) {
   return provider === "anthropic" ? (
