@@ -95,8 +95,8 @@ async function start() {
 export function subscribe(fn: (e: LiveEvent) => void): () => void {
   live.listeners.add(fn);
   fn({ type: "status", status: live.status });
-  const latest = live.latest ? live.runs.get(live.latest) : null;
-  if (latest) fn({ type: "run", run: latest.state });
+  // No replay of earlier runs: a page refresh starts from an empty canvas.
+  // (A run still in progress keeps streaming its next steps.)
   if (!live.started) {
     live.started = true;
     void start();

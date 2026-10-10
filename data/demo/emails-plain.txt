@@ -1,0 +1,45 @@
+Send to: william.ragnarsson+rfq@gmail.com
+
+
+===== EMAIL 1: complete order, in stock =====
+
+Subject: RFQ - 304 stainless sheets
+Attach: ridgeway-spec-RF-MS-0412.pdf
+
+Hi Thomas,
+
+We'd like to order 40 sheets of 304 stainless. The full material specification is in the attached PDF.
+
+Could you confirm availability and price?
+
+Kind regards,
+Laura Chen
+Purchasing, Ridgeway Fabrication
+
+
+===== EMAIL 2: missing information =====
+
+Subject: RFQ - 304 sheet
+Attach: davies-spec-DMW-118.pdf
+
+Hello,
+
+Please quote 25 sheets of 304 sheet per the attached spec.
+
+Thanks,
+Mark Davies
+Davies Marine Works
+
+
+===== EMAIL 3: not enough stock =====
+
+Subject: RFQ - 316L sheets for new line
+Attach: coastal-spec-CFE-2026-07.pdf
+
+Hi Thomas,
+
+We need 200 sheets of 316L for a new food-processing line. Spec attached. Delivery within two weeks if possible.
+
+Best,
+Priya Nair
+Head of Procurement, Coastal Food Equipment
