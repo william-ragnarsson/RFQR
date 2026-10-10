@@ -1,0 +1,49 @@
+{
+  "warehouse": "Northline Steel — Main warehouse",
+  "updated": "2026-10-10",
+  "currency": "USD",
+  "items": [
+    {
+      "sku": "SS304-16-4896-2B",
+      "description": "Stainless 304 sheet, 16 ga (0.060 in), 48 x 96 in, 2B",
+      "material": "stainless steel", "grade": "304", "standard": "ASTM A240",
+      "thickness_in": 0.06, "width_in": 48, "length_in": 96, "finish": "2B",
+      "on_hand": 120, "unit_price": 182.4, "origin": "USA", "mtr": "EN 10204 3.1"
+    },
+    {
+      "sku": "SS304-14-4896-2B",
+      "description": "Stainless 304 sheet, 14 ga (0.075 in), 48 x 96 in, 2B",
+      "material": "stainless steel", "grade": "304", "standard": "ASTM A240",
+      "thickness_in": 0.075, "width_in": 48, "length_in": 96, "finish": "2B",
+      "on_hand": 60, "unit_price": 228.0, "origin": "USA", "mtr": "EN 10204 3.1"
+    },
+    {
+      "sku": "SS304-16-48120-2B",
+      "description": "Stainless 304 sheet, 16 ga (0.060 in), 48 x 120 in, 2B",
+      "material": "stainless steel", "grade": "304", "standard": "ASTM A240",
+      "thickness_in": 0.06, "width_in": 48, "length_in": 120, "finish": "2B",
+      "on_hand": 40, "unit_price": 229.5, "origin": "USA", "mtr": "EN 10204 3.1"
+    },
+    {
+      "sku": "SS304-16-4896-4",
+      "description": "Stainless 304 sheet, 16 ga (0.060 in), 48 x 96 in, #4 brushed",
+      "material": "stainless steel", "grade": "304", "standard": "ASTM A240",
+      "thickness_in": 0.06, "width_in": 48, "length_in": 96, "finish": "#4",
+      "on_hand": 25, "unit_price": 214.0, "origin": "USA", "mtr": "EN 10204 3.1"
+    },
+    {
+      "sku": "SS316L-16-4896-2B",
+      "description": "Stainless 316L sheet, 16 ga (0.060 in), 48 x 96 in, 2B",
+      "material": "stainless steel", "grade": "316L", "standard": "ASTM A240",
+      "thickness_in": 0.06, "width_in": 48, "length_in": 96, "finish": "2B",
+      "on_hand": 80, "unit_price": 256.0, "origin": "Sweden", "mtr": "EN 10204 3.1"
+    },
+    {
+      "sku": "SS316L-10-60120-2B",
+      "description": "Stainless 316L sheet, 10 ga (0.135 in), 60 x 120 in, 2B",
+      "material": "stainless steel", "grade": "316L", "standard": "ASTM A240",
+      "thickness_in": 0.135, "width_in": 60, "length_in": 120, "finish": "2B",
+      "on_hand": 35, "unit_price": 899.0, "origin": "Sweden", "mtr": "EN 10204 3.1"
+    }
+  ]
+}

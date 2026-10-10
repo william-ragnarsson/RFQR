@@ -1,0 +1,85 @@
+{
+  "seller": { "name": "Thomas Berg", "company": "Northline Steel", "role": "Sales" },
+  "scenarios": [
+    {
+      "id": "1-complete",
+      "title": "Complete and in stock",
+      "expectedOutcome": "confirmed",
+      "email": {
+        "subject": "RFQ - 304 stainless sheets",
+        "body": "Hi Thomas,\n\nWe'd like to order 40 sheets of 304 stainless. The full material specification is in the attached PDF.\n\nCould you confirm availability and price?\n\nKind regards,\nLaura Chen\nPurchasing, Ridgeway Fabrication"
+      },
+      "pdf": {
+        "file": "ridgeway-spec-RF-MS-0412.pdf",
+        "buyer": "Ridgeway Fabrication",
+        "docNo": "RF-MS-0412",
+        "title": "Material Specification Sheet",
+        "project": "Hopper liner, line 3",
+        "rows": [
+          ["Material", "Stainless steel, AISI 304"],
+          ["Specification", "ASTM A240 / ASME SA240"],
+          ["Product form", "Sheet"],
+          ["Thickness", "16 ga (0.060 in)"],
+          ["Size", "48 in x 96 in"],
+          ["Finish", "2B"],
+          ["Certification", "Mill test report per EN 10204 3.1 required with shipment"],
+          ["Country of origin", "Melted and manufactured in USA or EU"],
+          ["Required delivery", "2026-10-30"]
+        ],
+        "notes": "Sheets must be shipped flat on wooden skids with PVC film on one side. Do not substitute grade without written approval."
+      }
+    },
+    {
+      "id": "2-missing-info",
+      "title": "Missing thickness and finish",
+      "expectedOutcome": "clarify",
+      "email": {
+        "subject": "RFQ - 304 sheet",
+        "body": "Hello,\n\nPlease quote 25 sheets of 304 sheet per the attached spec.\n\nThanks,\nMark Davies\nDavies Marine Works"
+      },
+      "pdf": {
+        "file": "davies-spec-DMW-118.pdf",
+        "buyer": "Davies Marine Works",
+        "docNo": "DMW-118",
+        "title": "Purchase Specification",
+        "project": "Deck hatch covers",
+        "rows": [
+          ["Material", "Stainless steel, type 304"],
+          ["Standard", "ASTM A240"],
+          ["Form", "Sheet"],
+          ["Thickness", "Per drawing D-2231"],
+          ["Dimensions", "48 x 96 in"],
+          ["Certification", "Mill certs (EN 10204 3.1) required"]
+        ],
+        "notes": "Material to be free of surface scratches. Drawing D-2231 available on request."
+      }
+    },
+    {
+      "id": "3-out-of-stock",
+      "title": "More than we have in stock",
+      "expectedOutcome": "unavailable",
+      "email": {
+        "subject": "RFQ - 316L sheets for new line",
+        "body": "Hi Thomas,\n\nWe need 200 sheets of 316L for a new food-processing line. Spec attached. Delivery within two weeks if possible.\n\nBest,\nPriya Nair\nHead of Procurement, Coastal Food Equipment"
+      },
+      "pdf": {
+        "file": "coastal-spec-CFE-2026-07.pdf",
+        "buyer": "Coastal Food Equipment",
+        "docNo": "CFE-2026-07",
+        "title": "Material Requirement",
+        "project": "Line 7 conveyor guards",
+        "rows": [
+          ["Material", "Stainless steel 316L (UNS S31603)"],
+          ["Specification", "ASTM A240"],
+          ["Form", "Sheet"],
+          ["Gauge", "10 ga (0.135 in)"],
+          ["Sheet size", "60 in x 120 in"],
+          ["Finish", "2B"],
+          ["Documentation", "EN 10204 3.1 mill test certificate for every heat"],
+          ["Origin", "EU or USA melt only"]
+        ],
+        "notes": "Food-contact application. Material must be traceable to heat number."
+      }
+    }
+  ]
+}

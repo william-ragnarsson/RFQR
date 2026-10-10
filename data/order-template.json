@@ -1,0 +1,20 @@
+{
+  "id": "order-intake-v1",
+  "name": "Order Intake Form",
+  "company": "Northline Steel",
+  "description": "Everything Northline Steel needs before an order can be fulfilled. All required fields must be filled from the buyer's own words.",
+  "fields": [
+    { "key": "customer", "label": "Customer", "required": true, "type": "string", "hint": "Buyer's company name, usually in the email signature" },
+    { "key": "material", "label": "Material", "required": true, "type": "enum", "options": ["stainless steel", "carbon steel", "aluminum"] },
+    { "key": "grade", "label": "Grade", "required": true, "type": "enum", "options": ["304", "304L", "316", "316L"] },
+    { "key": "standard", "label": "Spec standard", "required": true, "type": "string", "hint": "e.g. ASTM A240" },
+    { "key": "thickness_in", "label": "Thickness (in)", "required": true, "type": "number", "hint": "Gauge converts to inches: 10 ga = 0.135, 14 ga = 0.075, 16 ga = 0.060" },
+    { "key": "width_in", "label": "Width (in)", "required": true, "type": "number" },
+    { "key": "length_in", "label": "Length (in)", "required": true, "type": "number" },
+    { "key": "finish", "label": "Finish", "required": true, "type": "enum", "options": ["2B", "#4", "BA"] },
+    { "key": "quantity", "label": "Quantity (sheets)", "required": true, "type": "integer" },
+    { "key": "certification", "label": "Certification", "required": true, "type": "string", "hint": "Mill test report requirement, e.g. EN 10204 3.1" },
+    { "key": "country_of_origin", "label": "Country of origin", "required": false, "type": "string" },
+    { "key": "delivery_date", "label": "Requested delivery", "required": false, "type": "date" }
+  ]
+}
