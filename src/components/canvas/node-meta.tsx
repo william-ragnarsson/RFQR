@@ -59,7 +59,7 @@ export const NODE_META: Record<Selection, NodeMeta> = {
     label: "Image",
     subtitle: "Read photo or scan",
     roadmap:
-      "Read photos and scans, like a phone picture of a drawing or a scanned PDF without a text layer. Every value still points to where on the page it was read, so Thomas can check it.",
+      "Read photos and screenshots sent as .jpg or .png, like a phone picture of a handwritten list or a drawing. The values go into the same order form and stock check.",
   },
 };
 

@@ -55,7 +55,7 @@ function roadmapEdge(source: string, target: string, withArrow = true): Edge {
   };
 }
 
-/** The merged line carries the email to both readers, so it is as far along as the furthest one. */
+/** The merged line carries the email to both readers: running while either still is, dark once one has finished. */
 function readersStatus(run: RunState | null): NodeStatus {
   const readers = [nodeState(run, "text").status, nodeState(run, "pdf").status];
   if (readers.includes("running")) return "running";

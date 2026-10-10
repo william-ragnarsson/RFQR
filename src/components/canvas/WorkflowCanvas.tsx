@@ -59,6 +59,8 @@ const junction = (id: string, x: number): JunctionNodeType => ({
   draggable: false,
   selectable: false,
   focusable: false,
+  // Clicks fall through to the pane, as on the edges, so clicking a dot still closes the drawer.
+  style: { pointerEvents: "none" },
 });
 
 const INITIAL_NODES: CanvasNode[] = [
@@ -199,9 +201,7 @@ export function WorkflowCanvas() {
               edges={edges}
               nodeTypes={nodeTypes}
               onNodesChange={onNodesChange}
-              onNodeClick={(_, node) => {
-                if (node.type !== "junction") setSelected(node.id as Selection);
-              }}
+              onNodeClick={(_, node) => setSelected(node.id as Selection)}
               onPaneClick={() => setSelected(null)}
               fitView
               fitViewOptions={FIT_OPTIONS}
