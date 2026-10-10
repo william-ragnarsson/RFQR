@@ -1,8 +1,9 @@
 // Which AI model reads which input. One place, so the canvas, the drawer and
-// (later) the pipeline all agree.
+// the pipeline all agree.
 //
-// TODO(phase 2): read the ids from env (e.g. TEXT_MODEL / PDF_MODEL) on the
-// server and pass them down; the display names stay here.
+// The server pipeline reads the model ids from env (TEXT_MODEL / PDF_MODEL),
+// falling back to the ids below, and every ExtractorResult carries the id it
+// actually used. The canvas shows display names via modelInfo(id).
 
 export type ModelProvider = "openai" | "anthropic";
 

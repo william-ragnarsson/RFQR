@@ -1,4 +1,4 @@
-import { STOCK, formatMoney } from "@/lib/mock-run";
+import { STOCK, formatMoney } from "@/lib/rules";
 
 export function StockDetail({ matchedSku }: { matchedSku: string | null }) {
   return (

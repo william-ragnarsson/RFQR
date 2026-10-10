@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<!--
+  RudCo /platform page, recreated as a static mockup with one addition:
+  the RFQ to Quote product (RFQR). Everything else mirrors rud-co.com/platform
+  and links back to the live site. Links marked data-app-link open the RFQR app.
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex">
+  <title>Platform — RFQ to Quote | RudCo × RFQR</title>
+  <link rel="icon" href="data:image/png;base64,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">
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script>
+    // Same theme tokens as RudCo's shadcn/Tailwind build, so their class names render identically.
+    tailwind.config = {
+      theme: {
+        container: { center: true, padding: "2rem", screens: { "2xl": "1400px" } },
+        extend: {
+          colors: {
+            border: "hsl(var(--border))",
+            input: "hsl(var(--input))",
+            ring: "hsl(var(--ring))",
+            background: "hsl(var(--background))",
+            foreground: "hsl(var(--foreground))",
+            primary: { DEFAULT: "hsl(var(--primary))", foreground: "hsl(var(--primary-foreground))" },
+            secondary: { DEFAULT: "hsl(var(--secondary))", foreground: "hsl(var(--secondary-foreground))" },
+            muted: { DEFAULT: "hsl(var(--muted))", foreground: "hsl(var(--muted-foreground))" },
+            accent: { DEFAULT: "hsl(var(--accent))", foreground: "hsl(var(--accent-foreground))" },
+            card: { DEFAULT: "hsl(var(--card))", foreground: "hsl(var(--card-foreground))" },
+          },
+          borderRadius: {
+            lg: "var(--radius)",
+            md: "calc(var(--radius) - 2px)",
+            sm: "calc(var(--radius) - 4px)",
+          },
+        },
+      },
+    };
+  </script>
+  <style>
+    :root {
+      --background: 0 0% 100%;
+      --foreground: 220 26% 14%;
+      --card: 0 0% 100%;
+      --card-foreground: 220 26% 14%;
+      --primary: 214 100% 50%;
+      --primary-foreground: 0 0% 100%;
+      --secondary: 210 20% 96%;
+      --secondary-foreground: 220 26% 14%;
+      --muted: 210 20% 97%;
+      --muted-foreground: 220 15% 50%;
+      --accent: 210 20% 96%;
+      --accent-foreground: 220 26% 14%;
+      --border: 220 13% 91%;
+      --input: 0 0% 100%;
+      --ring: 214 100% 50%;
+      --radius: .375rem;
+    }
+    * { border-color: hsl(var(--border)); }
+    html { scroll-behavior: smooth; }
+    body { background-color: hsl(var(--background)); color: hsl(var(--foreground)); }
+    section[id] { scroll-margin-top: 6rem; }
+    [role="tabpanel"][hidden] { display: none; }
+  </style>
+</head>
+<body>
+  <!-- Site header (fixed; gains a background once the page scrolls) -->
+  <header id="site-header" class="fixed top-0 inset-x-0 z-50 transition-colors duration-300 bg-transparent">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="flex items-center justify-between py-4">
+        <a class="flex items-center space-x-3 hover:opacity-80 transition-opacity" aria-label="RudCo Industrial Materials Platform home" href="https://www.rud-co.com/">
+          <img src="data:image/png;base64,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" alt="RudCo Industrial Materials Platform logo" class="h-8 w-8 rounded-full">
+          <div class="flex flex-col leading-tight">
+            <span class="text-base md:text-lg font-semibold text-foreground">RudCo</span>
+            <span class="text-[10px] md:text-xs text-muted-foreground">Industrial Materials Platform</span>
+          </div>
+        </a>
+        <nav class="hidden md:flex items-center space-x-8">
+          <a class="text-sm font-medium transition-colors text-foreground/90 hover:text-primary" href="https://www.rud-co.com/platform">Platform</a>
+          <a class="text-sm font-medium transition-colors text-foreground/90 hover:text-primary" href="https://www.rud-co.com/contact">Contact</a>
+          <button type="button" class="text-sm font-medium transition-colors flex items-center gap-1 outline-none text-foreground/90 hover:text-primary">Materials <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-3 w-3"><path d="m6 9 6 6 6-6"/></svg></button>
+          <a class="text-sm font-medium transition-colors text-foreground/90 hover:text-primary" href="https://www.rud-co.com/resources">Resources</a>
+          <a href="tel:+18559783326" class="flex items-center gap-1.5 text-sm font-semibold transition-colors text-primary hover:text-primary/80">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-3.5 w-3.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>(855) 978-3326</a>
+        </nav>
+        <div class="md:hidden flex items-center gap-2">
+          <a href="tel:+18559783326" class="inline-flex items-center justify-center rounded-md p-2 text-primary hover:bg-muted/50" aria-label="Call RudCo">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          </a>
+          <button type="button" aria-label="Open menu" class="inline-flex items-center justify-center rounded-md p-2 text-foreground hover:bg-muted/50">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-6 w-6"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <header class="border-b bg-background">
+    <div class="container mx-auto px-4 py-12">
+      <div class="max-w-3xl my-[35px]">
+        <a href="#rfq" class="group inline-flex items-center rounded-full border px-3 py-1 text-xs text-muted-foreground transition-colors hover:border-primary/40">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-1 h-3.5 w-3.5"><path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"/></svg>
+          Real-time procurement and automation
+          <span class="mx-2 h-3 w-px bg-border"></span>
+          <span class="inline-flex items-center gap-1 font-medium text-primary">New: RFQ to Quote <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-3 w-3 transition-transform group-hover:translate-x-0.5"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
+        </a>
+        <h1 class="mt-4 text-4xl font-bold tracking-tight sm:text-5xl">Industrial Materials Network &amp; Intelligence Platform</h1>
+        <p class="mt-4 text-muted-foreground">Connect and automate the sourcing and flow of industrial aggregates and raw materials — metals, alloys, abrasives, and chemical inputs — with logistics visibility and compliance transparency.</p>
+        <div class="mt-6 flex flex-wrap items-center gap-3">
+          <a class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors bg-primary text-primary-foreground hover:bg-primary/90 h-10 px-4 py-2" href="https://www.rud-co.com/contact">Request a Demo</a>
+          <a class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors bg-secondary text-secondary-foreground hover:bg-secondary/80 h-10 px-4 py-2" href="https://www.rud-co.com/materials">Explore Materials</a>
+        </div>
+      </div>
+    </div>
+    <!-- Molten-metal band -->
+    <div class="relative h-24 w-full overflow-hidden bg-gradient-to-r from-amber-900/20 via-orange-800/30 to-red-900/20" aria-hidden="true">
+      <div class="absolute inset-0">
+        <div class="relative h-full w-full">
+          <div class="absolute top-1/2 h-6 w-full -translate-y-1/2 bg-gradient-to-r from-orange-600 via-yellow-400 to-orange-600 animate-pulse shadow-[0_0_20px_rgba(255,165,0,0.8),0_0_40px_rgba(255,69,0,0.6)]"></div>
+          <div class="absolute left-[10%] top-[30%] h-1 w-1 rounded-full bg-yellow-300 animate-bounce" style="animation-delay: 0.1s;"></div>
+          <div class="absolute left-[25%] top-[60%] h-1 w-1 rounded-full bg-yellow-400 animate-bounce" style="animation-delay: 0.3s;"></div>
+          <div class="absolute left-[40%] top-[25%] h-0.5 w-0.5 rounded-full bg-orange-400 animate-ping" style="animation-delay: 0.5s;"></div>
+          <div class="absolute left-[55%] top-[70%] h-1 w-1 rounded-full bg-yellow-300 animate-bounce" style="animation-delay: 0.7s;"></div>
+          <div class="absolute left-[70%] top-[35%] h-0.5 w-0.5 rounded-full bg-orange-400 animate-ping" style="animation-delay: 0.9s;"></div>
+          <div class="absolute left-[85%] top-[55%] h-1 w-1 rounded-full bg-yellow-400 animate-bounce" style="animation-delay: 1.1s;"></div>
+          <div class="absolute left-[15%] top-[45%] h-0.5 w-0.5 rounded-full bg-yellow-300 animate-ping" style="animation-delay: 1.3s;"></div>
+          <div class="absolute left-[35%] top-[65%] h-1 w-1 rounded-full bg-orange-400 animate-bounce" style="animation-delay: 1.5s;"></div>
+          <div class="absolute left-[60%] top-[40%] h-0.5 w-0.5 rounded-full bg-yellow-400 animate-ping" style="animation-delay: 1.7s;"></div>
+          <div class="absolute left-[80%] top-[25%] h-1 w-1 rounded-full bg-orange-300 animate-bounce" style="animation-delay: 1.9s;"></div>
+          <div class="absolute left-[20%] top-[50%] h-0.5 w-0.5 rounded-full bg-gray-400 animate-pulse" style="animation-delay: 0.2s;"></div>
+          <div class="absolute left-[45%] top-[55%] h-0.5 w-0.5 rounded-full bg-gray-500 animate-pulse" style="animation-delay: 0.6s;"></div>
+          <div class="absolute left-[75%] top-[45%] h-0.5 w-0.5 rounded-full bg-gray-400 animate-pulse" style="animation-delay: 1s;"></div>
+          <div class="absolute left-[30%] top-[40%] h-0.5 w-0.5 rounded-full bg-gray-600 animate-pulse" style="animation-delay: 1.4s;"></div>
+          <div class="absolute left-[65%] top-[60%] h-0.5 w-0.5 rounded-full bg-gray-400 animate-pulse" style="animation-delay: 1.8s;"></div>
+          <div class="absolute inset-0 bg-gradient-to-r from-transparent via-orange-500/20 to-transparent opacity-30 animate-pulse"></div>
+          <div class="absolute inset-0 bg-gradient-to-r from-transparent via-red-500/10 to-transparent opacity-40 animate-pulse" style="animation-delay: 0.5s;"></div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Section nav -->
+  <nav aria-label="Platform sections" class="sticky top-0 z-30 border-b bg-background/80 backdrop-blur">
+    <div class="container mx-auto px-4">
+      <ul class="flex flex-wrap items-center gap-1 overflow-x-auto py-2 text-sm text-muted-foreground">
+        <li><a class="rounded-md px-3 py-1 hover:text-foreground" href="#overview">Overview</a></li>
+        <li><a class="inline-flex items-center gap-1.5 rounded-md px-3 py-1 font-medium text-primary hover:text-primary/80" href="#rfq">RFQ to Quote <span class="rounded-full bg-primary/10 px-1.5 py-px text-[10px] font-semibold leading-4">New</span></a></li>
+        <li><a class="rounded-md px-3 py-1 hover:text-foreground" href="#features" data-show-tab="sourcing">Sourcing</a></li>
+        <li><a class="rounded-md px-3 py-1 hover:text-foreground" href="#features" data-show-tab="logistics">Logistics</a></li>
+        <li><a class="rounded-md px-3 py-1 hover:text-foreground" href="#features" data-show-tab="compliance">Compliance</a></li>
+        <li><a class="rounded-md px-3 py-1 hover:text-foreground" href="#features" data-show-tab="automation">Automation</a></li>
+        <li class="ml-auto"><a class="rounded-md px-3 py-1 hover:text-foreground" href="https://www.rud-co.com/contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+    <!-- Overview: the four existing products, with RFQ to Quote added as the first step -->
+    <section id="overview" class="bg-muted/30">
+      <div class="container mx-auto px-4 py-10">
+        <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 mb-8">
+          <a href="/" data-app-link class="group rounded-lg border border-primary/40 bg-card text-card-foreground h-full shadow-sm relative ring-1 ring-primary/15 transition-shadow hover:shadow-md flex flex-col">
+            <span class="absolute -top-2.5 right-4 rounded-full bg-primary px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-primary-foreground">New</span>
+            <div class="flex flex-col space-y-1.5 p-6">
+              <div class="flex items-center gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5 shrink-0 text-primary"><path d="M14 14a2 2 0 0 0 2-2V8h-2"/><path d="M22 17a2 2 0 0 1-2 2H6.828a2 2 0 0 0-1.414.586l-2.202 2.202A.71.71 0 0 1 2 21.286V5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2z"/><path d="M8 14a2 2 0 0 0 2-2V8H8"/></svg>
+                <h3 class="font-semibold tracking-tight text-base">RFQ to Quote</h3>
+              </div>
+            </div>
+            <div class="p-6 pt-0 flex flex-1 flex-col justify-between gap-3">
+              <p class="text-sm text-muted-foreground">Turn incoming RFQ emails and spec PDFs into approved quotes in minutes.</p>
+              <span class="inline-flex items-center gap-1 text-sm font-medium text-primary">Open RFQR <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4 transition-transform group-hover:translate-x-0.5"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
+            </div>
+          </a>
+          <div class="rounded-lg border bg-card text-card-foreground h-full shadow-sm relative">
+            <div class="flex flex-col space-y-1.5 p-6">
+              <div class="flex items-center gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5 shrink-0"><path d="M2.97 12.92A2 2 0 0 0 2 14.63v3.24a2 2 0 0 0 .97 1.71l3 1.8a2 2 0 0 0 2.06 0L12 19v-5.5l-5-3-4.03 2.42Z"/><path d="m7 16.5-4.74-2.85"/><path d="m7 16.5 5-3"/><path d="M7 16.5v5.17"/><path d="M12 13.5V19l3.97 2.38a2 2 0 0 0 2.06 0l3-1.8a2 2 0 0 0 .97-1.71v-3.24a2 2 0 0 0-.97-1.71L17 10.5l-5 3Z"/><path d="m17 16.5-5-3"/><path d="m17 16.5 4.74-2.85"/><path d="M17 16.5v5.17"/><path d="M7.97 4.42A2 2 0 0 0 7 6.13v4.37l5 3 5-3V6.13a2 2 0 0 0-.97-1.71l-3-1.8a2 2 0 0 0-2.06 0l-3 1.8Z"/><path d="M12 8 7.26 5.15"/><path d="m12 8 4.74-2.85"/><path d="M12 13.5V8"/></svg>
+                <h3 class="font-semibold tracking-tight text-base">Smarter Sourcing</h3>
+              </div>
+            </div>
+            <div class="p-6 pt-0">
+              <p class="text-sm text-muted-foreground">Match demand to supply in real time across a trusted B2B network.</p>
+            </div>
+          </div>
+          <div class="rounded-lg border bg-card text-card-foreground h-full shadow-sm relative">
+            <div class="flex flex-col space-y-1.5 p-6">
+              <div class="flex items-center gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5 shrink-0"><path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"/><path d="M15 18H9"/><path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.624l-3.48-4.35A1 1 0 0 0 17.52 8H14"/><circle cx="17" cy="18" r="2"/><circle cx="7" cy="18" r="2"/></svg>
+                <h3 class="font-semibold tracking-tight text-base">Logistics Visibility</h3>
+              </div>
+            </div>
+            <div class="p-6 pt-0">
+              <p class="text-sm text-muted-foreground">Track orders end-to-end with proactive updates and ETAs.</p>
+            </div>
+          </div>
+          <div class="rounded-lg border bg-card text-card-foreground h-full shadow-sm relative">
+            <div class="flex flex-col space-y-1.5 p-6">
+              <div class="flex items-center gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5 shrink-0"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg>
+                <h3 class="font-semibold tracking-tight text-base">Compliance &amp; Traceability</h3>
+              </div>
+            </div>
+            <div class="p-6 pt-0">
+              <p class="text-sm text-muted-foreground">Built-in compliance, SDS and mill cert management.</p>
+            </div>
+          </div>
+          <div class="rounded-lg border bg-card text-card-foreground h-full shadow-sm relative">
+            <div class="flex flex-col space-y-1.5 p-6">
+              <div class="flex items-center gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5 shrink-0"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg>
+                <h3 class="font-semibold tracking-tight text-base">Automated Click-to-Buy</h3>
+              </div>
+            </div>
+            <div class="p-6 pt-0">
+              <p class="text-sm text-muted-foreground">Automates into your existing workflow for fast, one-click purchasing.</p>
+            </div>
+          </div>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto mt-8">
+          <button type="button" class="gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors border border-input bg-background hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2 w-full flex items-center justify-between">
+            <span class="text-sm font-medium">Preview Platform Dashboard</span>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4"><path d="m6 9 6 6 6-6"/></svg>
+          </button>
+          <button type="button" class="gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors border border-input bg-background hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2 w-full flex items-center justify-between">
+            <span class="text-sm font-medium">Preview Trade Insights</span>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4"><path d="m6 9 6 6 6-6"/></svg>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- RFQ to Quote: where it sits in the order lifecycle -->
+    <section id="rfq" class="border-t bg-background">
+      <div class="container mx-auto px-4 py-14">
+        <div class="max-w-3xl mb-10">
+          <span class="inline-flex items-center gap-1.5 rounded-full border border-primary/30 bg-primary/5 px-3 py-1 text-xs font-medium text-primary">New · RFQ to Quote</span>
+          <h2 class="mt-4 text-3xl font-bold tracking-tight sm:text-4xl">Every order starts with a request for quote</h2>
+          <p class="mt-3 text-muted-foreground">RudCo already covers everything after an order is placed. RFQ to Quote covers the step before it: incoming RFQs are read, matched against stock and answered with a quote your team approves — in minutes, not days.</p>
+        </div>
+
+        <div class="grid gap-3 md:grid-cols-5">
+          <div class="hidden md:flex items-center gap-2 pb-1 text-xs font-semibold uppercase tracking-wider text-primary">Before the order <span class="h-px flex-1 bg-primary/30"></span></div>
+          <div class="hidden md:flex md:col-span-4 items-center gap-2 pb-1 text-xs font-semibold uppercase tracking-wider text-muted-foreground">After the order <span class="h-px flex-1 bg-border"></span> <span class="font-medium normal-case tracking-normal">already on RudCo</span></div>
+
+          <a href="/" data-app-link class="group relative rounded-lg border border-primary/40 bg-card p-4 shadow-sm ring-1 ring-primary/15 transition-shadow hover:shadow-md">
+            <div class="flex items-center justify-between text-xs text-primary"><span class="font-semibold">01</span><span class="rounded-full bg-primary px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-primary-foreground">New</span></div>
+            <div class="mt-3 font-semibold tracking-tight">RFQ to Quote</div>
+            <p class="mt-1 text-sm text-muted-foreground">Request in, quote out</p>
+            <span class="absolute -right-[18px] top-1/2 z-10 hidden h-6 w-6 -translate-y-1/2 items-center justify-center rounded-full border bg-background text-muted-foreground md:flex"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-3 w-3"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
+          </a>
+          <div class="relative rounded-lg border bg-card p-4 shadow-sm">
+            <div class="text-xs font-semibold text-muted-foreground">02</div>
+            <div class="mt-3 font-semibold tracking-tight">Smarter Sourcing</div>
+            <p class="mt-1 text-sm text-muted-foreground">Supply matched in real time</p>
+            <span class="absolute -right-[18px] top-1/2 z-10 hidden h-6 w-6 -translate-y-1/2 items-center justify-center rounded-full border bg-background text-muted-foreground md:flex"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-3 w-3"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
+          </div>
+          <div class="relative rounded-lg border bg-card p-4 shadow-sm">
+            <div class="text-xs font-semibold text-muted-foreground">03</div>
+            <div class="mt-3 font-semibold tracking-tight">Automated Click-to-Buy</div>
+            <p class="mt-1 text-sm text-muted-foreground">One-click purchasing</p>
+            <span class="absolute -right-[18px] top-1/2 z-10 hidden h-6 w-6 -translate-y-1/2 items-center justify-center rounded-full border bg-background text-muted-foreground md:flex"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-3 w-3"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
+          </div>
+          <div class="relative rounded-lg border bg-card p-4 shadow-sm">
+            <div class="text-xs font-semibold text-muted-foreground">04</div>
+            <div class="mt-3 font-semibold tracking-tight">Logistics Visibility</div>
+            <p class="mt-1 text-sm text-muted-foreground">Tracked end-to-end</p>
+            <span class="absolute -right-[18px] top-1/2 z-10 hidden h-6 w-6 -translate-y-1/2 items-center justify-center rounded-full border bg-background text-muted-foreground md:flex"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-3 w-3"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
+          </div>
+          <div class="relative rounded-lg border bg-card p-4 shadow-sm">
+            <div class="text-xs font-semibold text-muted-foreground">05</div>
+            <div class="mt-3 font-semibold tracking-tight">Compliance &amp; Traceability</div>
+            <p class="mt-1 text-sm text-muted-foreground">Certs and docs attached</p>
+          </div>
+        </div>
+
+        <div class="mt-8 flex flex-wrap items-center gap-3">
+          <a href="/" data-app-link class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors bg-primary text-primary-foreground hover:bg-primary/90 h-10 px-4 py-2">Open RFQR <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+          <a href="#features" data-show-tab="rfq" class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors bg-secondary text-secondary-foreground hover:bg-secondary/80 h-10 px-4 py-2">See how it works</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Feature tabs -->
+    <section id="features" class="border-t">
+      <div class="container mx-auto px-4 py-12">
+        <div role="tablist" aria-orientation="horizontal" class="inline-flex h-10 max-w-full items-center justify-start overflow-x-auto rounded-md bg-muted p-1 text-muted-foreground mb-6">
+          <button type="button" role="tab" data-tab="rfq" class="inline-flex items-center justify-center gap-1.5 whitespace-nowrap rounded-sm px-3 py-1.5 text-sm font-medium transition-all data-[state=active]:bg-background data-[state=active]:text-foreground data-[state=active]:shadow-sm">RFQ to Quote <span class="h-1.5 w-1.5 rounded-full bg-primary"></span></button>
+          <button type="button" role="tab" data-tab="sourcing" class="inline-flex items-center justify-center whitespace-nowrap rounded-sm px-3 py-1.5 text-sm font-medium transition-all data-[state=active]:bg-background data-[state=active]:text-foreground data-[state=active]:shadow-sm">Sourcing</button>
+          <button type="button" role="tab" data-tab="logistics" class="inline-flex items-center justify-center whitespace-nowrap rounded-sm px-3 py-1.5 text-sm font-medium transition-all data-[state=active]:bg-background data-[state=active]:text-foreground data-[state=active]:shadow-sm">Logistics</button>
+          <button type="button" role="tab" data-tab="compliance" class="inline-flex items-center justify-center whitespace-nowrap rounded-sm px-3 py-1.5 text-sm font-medium transition-all data-[state=active]:bg-background data-[state=active]:text-foreground data-[state=active]:shadow-sm">Compliance</button>
+          <button type="button" role="tab" data-tab="automation" class="inline-flex items-center justify-center whitespace-nowrap rounded-sm px-3 py-1.5 text-sm font-medium transition-all data-[state=active]:bg-background data-[state=active]:text-foreground data-[state=active]:shadow-sm">Automation</button>
+        </div>
+
+        <!-- RFQ to Quote -->
+        <div role="tabpanel" data-panel="rfq" class="mt-2">
+          <div class="grid gap-6 lg:grid-cols-2">
+            <div class="rounded-lg border bg-card text-card-foreground shadow-sm">
+              <div class="flex flex-col space-y-1.5 p-6"><h3 class="text-2xl font-semibold leading-none tracking-tight">Turn RFQ emails into quotes</h3></div>
+              <div class="p-6 pt-0">
+                <ul class="space-y-2 text-sm text-muted-foreground">
+                  <li class="flex items-start gap-2"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mt-0.5 h-4 w-4 shrink-0"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg> Reads the request in the email body and the specs in attached PDFs</li>
+                  <li class="flex items-start gap-2"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mt-0.5 h-4 w-4 shrink-0"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg> Fills a standard order form with grade, dimensions, quantity and certs</li>
+                  <li class="flex items-start gap-2"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mt-0.5 h-4 w-4 shrink-0"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg> Checks live inventory and drafts the quote reply</li>
+                </ul>
+              </div>
+            </div>
+            <div class="rounded-lg border bg-card text-card-foreground shadow-sm">
+              <div class="flex flex-col space-y-1.5 p-6"><h3 class="text-2xl font-semibold leading-none tracking-tight">AI you can check</h3></div>
+              <div class="p-6 pt-0">
+                <p class="text-sm text-muted-foreground">AI only reads the request. Plain code fills and checks the order form, every value shows the line of the email or PDF it came from, and nothing is sent until someone on your team approves the reply.</p>
+              </div>
+            </div>
+            <div class="rounded-lg border bg-card text-card-foreground shadow-sm lg:col-span-2">
+              <div class="flex flex-col space-y-1.5 p-6"><h3 class="text-2xl font-semibold leading-none tracking-tight">Connected to the rest of RudCo</h3></div>
+              <div class="p-6 pt-0 flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
+                <ul class="space-y-2 text-sm text-muted-foreground">
+                  <li class="flex items-start gap-2"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mt-0.5 h-4 w-4 shrink-0"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg> Approved quotes become orders in Automated Click-to-Buy</li>
+                  <li class="flex items-start gap-2"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mt-0.5 h-4 w-4 shrink-0"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg> The same order carries on into Logistics Visibility and Compliance &amp; Traceability</li>
+                  <li class="flex items-start gap-2"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mt-0.5 h-4 w-4 shrink-0"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg> No re-keying between the inbox, the quote and the purchase order</li>
+                </ul>
+                <a href="/" data-app-link class="inline-flex shrink-0 items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors bg-primary text-primary-foreground hover:bg-primary/90 h-10 px-4 py-2">Open RFQR <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sourcing -->
+        <div role="tabpanel" data-panel="sourcing" class="mt-2" hidden>
+          <div class="grid gap-6 lg:grid-cols-2">
+            <div class="rounded-lg border bg-card text-card-foreground shadow-sm">
+              <div class="flex flex-col space-y-1.5 p-6"><h3 class="text-2xl font-semibold leading-none tracking-tight">Source cheaper and faster</h3></div>
+              <div class="p-6 pt-0">
+                <ul class="space-y-2 text-sm text-muted-foreground">
+                  <li class="flex items-start gap-2"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mt-0.5 h-4 w-4 shrink-0"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg> Competitive live pricing across trusted suppliers — lower landed cost on every order</li>
+                  <li class="flex items-start gap-2"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mt-0.5 h-4 w-4 shrink-0"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg> Instant quotes, counteroffers, and PO creation — hours, not days</li>
+                  <li class="flex items-start gap-2"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mt-0.5 h-4 w-4 shrink-0"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg> Spec-matched by alloy, purity, mesh, or chemical so you buy right the first time</li>
+                </ul>
+              </div>
+            </div>
+            <div class="rounded-lg border bg-card text-card-foreground shadow-sm">
+              <div class="flex flex-col space-y-1.5 p-6"><h3 class="text-2xl font-semibold leading-none tracking-tight">A wider, faster supplier network</h3></div>
+              <div class="p-6 pt-0">
+                <p class="text-sm text-muted-foreground">Tap into a vetted network of producers, processors, and distributors to find better prices and shorter lead times than a single-source relationship can deliver.</p>
+              </div>
+            </div>
+            <div class="rounded-lg border bg-card text-card-foreground shadow-sm lg:col-span-2">
+              <div class="flex flex-col space-y-1.5 p-6"><h3 class="text-2xl font-semibold leading-none tracking-tight">Procurement planning tools</h3></div>
+              <div class="p-6 pt-0">
+                <ul class="space-y-2 text-sm text-muted-foreground">
+                  <li class="flex items-start gap-2"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mt-0.5 h-4 w-4 shrink-0"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg> Projected-need dashboards that forecast upcoming demand</li>
+                  <li class="flex items-start gap-2"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mt-0.5 h-4 w-4 shrink-0"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg> Shortage alerts before inventory gaps disrupt production</li>
+                  <li class="flex items-start gap-2"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mt-0.5 h-4 w-4 shrink-0"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg> Compliance docs, COA/MTR capture, and full lot-level traceability</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Logistics -->
+        <div role="tabpanel" data-panel="logistics" class="mt-2" hidden>
+          <div class="grid gap-6 lg:grid-cols-2">
+            <div class="rounded-lg border bg-card text-card-foreground shadow-sm">
+              <div class="flex flex-col space-y-1.5 p-6"><h3 class="text-2xl font-semibold leading-none tracking-tight">Logistics visibility</h3></div>
+              <div class="p-6 pt-0">
+                <ul class="space-y-2 text-sm text-muted-foreground">
+                  <li class="flex items-start gap-2"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mt-0.5 h-4 w-4 shrink-0"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg> End-to-end tracking with mode and carrier data</li>
+                  <li class="flex items-start gap-2"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mt-0.5 h-4 w-4 shrink-0"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg> Exceptions and delay alerts before they happen</li>
+                  <li class="flex items-start gap-2"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mt-0.5 h-4 w-4 shrink-0"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg> Integrations with TMS and freight providers</li>
+                </ul>
+              </div>
+            </div>
+            <div class="rounded-lg border bg-card text-card-foreground shadow-sm">
+              <div class="flex flex-col space-y-1.5 p-6"><h3 class="text-2xl font-semibold leading-none tracking-tight">Streamlined order management</h3></div>
+              <div class="p-6 pt-0">
+                <ul class="space-y-2 text-sm text-muted-foreground">
+                  <li class="flex items-start gap-2"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mt-0.5 h-4 w-4 shrink-0"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg> Order directly through the portal with a guided checkout</li>
+                  <li class="flex items-start gap-2"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mt-0.5 h-4 w-4 shrink-0"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg> Track shipments with live carrier info and ETAs</li>
+                  <li class="flex items-start gap-2"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mt-0.5 h-4 w-4 shrink-0"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg> Reorder from purchase history in one click</li>
+                </ul>
+              </div>
+            </div>
+            <div class="rounded-lg border bg-card text-card-foreground shadow-sm p-6 lg:col-span-2">
+              <h3 class="text-lg font-semibold tracking-tight">Common Shipping Routes from Baltimore</h3>
+              <div class="mt-4 flex flex-wrap gap-2">
+                <button type="button" class="rounded-md border px-3 py-1.5 text-sm hover:bg-accent">Baltimore → Columbus (2–3 days)</button>
+                <button type="button" class="rounded-md border px-3 py-1.5 text-sm hover:bg-accent">Baltimore → Detroit (3–4 days)</button>
+                <button type="button" class="rounded-md border px-3 py-1.5 text-sm hover:bg-accent">Baltimore → Pittsburgh (2 days)</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Compliance -->
+        <div role="tabpanel" data-panel="compliance" class="mt-2" hidden>
+          <div class="rounded-lg border bg-card text-card-foreground shadow-sm">
+            <div class="flex flex-col space-y-1.5 p-6"><h3 class="text-2xl font-semibold leading-none tracking-tight">Compliance transparency</h3></div>
+            <div class="p-6 pt-0">
+              <ul class="space-y-2 text-sm text-muted-foreground">
+                <li class="flex items-start gap-2"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mt-0.5 h-4 w-4 shrink-0"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg> Automated SDS, mill cert, CoA management</li>
+                <li class="flex items-start gap-2"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mt-0.5 h-4 w-4 shrink-0"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg> Supplier risk and sanctions screening</li>
+                <li class="flex items-start gap-2"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mt-0.5 h-4 w-4 shrink-0"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg> Full traceability from source to shipment</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Automation -->
+        <div role="tabpanel" data-panel="automation" class="mt-2" hidden>
+          <div class="rounded-lg border bg-card text-card-foreground shadow-sm">
+            <div class="flex flex-col space-y-1.5 p-6"><h3 class="text-2xl font-semibold leading-none tracking-tight">We automate into your workflow</h3></div>
+            <div class="p-6 pt-0">
+              <p class="text-sm text-muted-foreground">Sourcing, purchasing, and reordering slot directly into the way your team already works — no rip-and-replace, no new habits. Click, buy, done.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Planning -->
+    <section id="planning" class="border-t bg-muted/30">
+      <div class="container mx-auto px-4 py-14">
+        <div class="max-w-3xl mb-8">
+          <span class="inline-flex items-center rounded-full border px-3 py-1 text-xs text-muted-foreground">Procurement Planning Tools</span>
+          <h2 class="mt-4 text-3xl font-bold tracking-tight sm:text-4xl">Plan ahead instead of reacting</h2>
+          <p class="mt-3 text-muted-foreground">Give buyers the visibility and controls they need to stay in front of demand — forecasting future needs, catching shortages early, and keeping every shipment fully documented and traceable.</p>
+        </div>
+        <div class="grid gap-6 md:grid-cols-3">
+          <div class="rounded-lg border bg-card text-card-foreground shadow-sm">
+            <div class="flex flex-col space-y-1.5 p-6"><h3 class="font-semibold tracking-tight text-lg">Projected-need dashboards</h3></div>
+            <div class="p-6 pt-0"><p class="text-sm text-muted-foreground">Forward-looking views of upcoming demand by material, grade, and site so buyers can line up supply before it's urgent.</p></div>
+          </div>
+          <div class="rounded-lg border bg-card text-card-foreground shadow-sm">
+            <div class="flex flex-col space-y-1.5 p-6"><h3 class="font-semibold tracking-tight text-lg">Shortage alerts</h3></div>
+            <div class="p-6 pt-0"><p class="text-sm text-muted-foreground">Proactive notifications when inventory, lead times, or supplier coverage put an upcoming need at risk — with recommended actions.</p></div>
+          </div>
+          <div class="rounded-lg border bg-card text-card-foreground shadow-sm">
+            <div class="flex flex-col space-y-1.5 p-6"><h3 class="font-semibold tracking-tight text-lg">Compliance, documents &amp; traceability</h3></div>
+            <div class="p-6 pt-0"><p class="text-sm text-muted-foreground">COAs, MTRs, mill certs, and country-of-origin records are captured with every shipment and tied back to the PO, lot, and heat number. Full chain-of-custody traceability from source to delivery, with audit-ready exports for ISO, AS9100, ITAR, and customer quality reviews.</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section id="cta" class="border-t bg-card">
+      <div class="container mx-auto flex flex-col items-start justify-between gap-4 px-4 py-10 sm:flex-row sm:items-center">
+        <div>
+          <h2 class="text-2xl font-semibold">Build a more resilient supply chain</h2>
+          <p class="text-muted-foreground">Get a live demo and see how quickly your team can source and buy with confidence.</p>
+        </div>
+        <div class="flex gap-3">
+          <a class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors bg-primary text-primary-foreground hover:bg-primary/90 h-10 px-4 py-2" href="https://www.rud-co.com/contact">Request Demo</a>
+          <a class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors border border-input bg-background hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2" href="https://www.rud-co.com/materials">Browse Materials</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="bg-gradient-to-b from-slate-700 to-slate-900 text-slate-300">
+    <div class="max-w-7xl mx-auto px-6 py-6">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+        <div class="space-y-4">
+          <div>
+            <div class="flex items-center space-x-3">
+              <img src="data:image/png;base64,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" alt="RudCo Logo" class="w-8 h-8 rounded-full">
+              <h3 class="text-3xl font-bold text-white tracking-tight">RudCo</h3>
+            </div>
+            <p class="text-sm text-slate-400 mt-2 leading-relaxed">Industrial materials simplified.<br>Precision. Transparency. Trust.</p>
+          </div>
+        </div>
+        <div class="space-y-4">
+          <h4 class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Explore</h4>
+          <nav class="space-y-3">
+            <a class="block text-sm text-slate-300 hover:text-white hover:underline transition-colors leading-relaxed" href="https://www.rud-co.com/materials">Materials Catalog</a>
+            <a class="block text-sm text-slate-300 hover:text-white hover:underline transition-colors leading-relaxed" href="/" data-app-link>Request Quote</a>
+            <a class="block text-sm text-slate-300 hover:text-white hover:underline transition-colors leading-relaxed" href="https://www.rud-co.com/platform">Platform</a>
+            <div class="flex items-center text-sm text-slate-300 leading-relaxed">
+              <a class="hover:text-white hover:underline transition-colors" href="https://www.rud-co.com/abrasives">Abrasives</a>
+              <span class="mx-2">|</span>
+              <a class="hover:text-white hover:underline transition-colors" href="https://www.rud-co.com/metals">Metals</a>
+            </div>
+            <a class="block text-sm text-slate-300 hover:text-white hover:underline transition-colors leading-relaxed" href="https://www.rud-co.com/industries">Industries</a>
+            <a class="block text-sm text-slate-300 hover:text-white hover:underline transition-colors leading-relaxed" href="https://www.rud-co.com/resources">Resources &amp; Guides</a>
+          </nav>
+        </div>
+        <div class="space-y-4">
+          <h4 class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Contact</h4>
+          <div class="space-y-3">
+            <a href="mailto:sales@rud-co.com" class="flex items-center text-sm text-slate-300 hover:text-white hover:underline transition-colors leading-relaxed">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4 mr-2 flex-shrink-0"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>sales@rud-co.com</a>
+            <a href="tel:+18559783326" class="flex items-center text-sm text-slate-300 hover:text-white hover:underline transition-colors leading-relaxed">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4 mr-2 flex-shrink-0"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>(855) 978-3326</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="border-t border-slate-800">
+      <div class="max-w-7xl mx-auto px-6 py-4">
+        <div class="flex flex-col sm:flex-row justify-between items-center text-xs text-slate-400 space-y-2 sm:space-y-0">
+          <div>© 2026 RudCo <span class="text-slate-500">· RFQ to Quote is a hackathon concept by RFQR</span></div>
+          <div class="flex space-x-6">
+            <a class="hover:text-slate-300 transition-colors" href="https://www.rud-co.com/privacy">Privacy</a>
+            <a class="hover:text-slate-300 transition-colors" href="https://www.rud-co.com/terms">Terms</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Served by the Next app, "/" is the RFQR canvas. Opened straight from disk, fall back to the dev server.
+    const APP_URL = location.protocol === "file:" ? "http://localhost:3000/" : "/";
+    document.querySelectorAll("[data-app-link]").forEach((a) => { a.href = APP_URL; });
+
+    // Header picks up RudCo's scrolled style.
+    const header = document.getElementById("site-header");
+    const scrolledClasses = ["bg-background/95", "border-b", "border-border", "shadow-sm", "backdrop-blur", "supports-[backdrop-filter]:bg-background/80"];
+    const onScroll = () => {
+      const scrolled = window.scrollY > 10;
+      header.classList.toggle("bg-transparent", !scrolled);
+      scrolledClasses.forEach((c) => header.classList.toggle(c, scrolled));
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
+
+    // Feature tabs.
+    const tabs = document.querySelectorAll("[role=tab][data-tab]");
+    const showTab = (name) => {
+      tabs.forEach((t) => {
+        const active = t.dataset.tab === name;
+        t.dataset.state = active ? "active" : "inactive";
+        t.setAttribute("aria-selected", String(active));
+      });
+      document.querySelectorAll("[role=tabpanel][data-panel]").forEach((p) => { p.hidden = p.dataset.panel !== name; });
+    };
+    tabs.forEach((t) => t.addEventListener("click", () => showTab(t.dataset.tab)));
+    document.querySelectorAll("[data-show-tab]").forEach((a) => a.addEventListener("click", () => showTab(a.dataset.showTab)));
+    showTab("rfq");
+  </script>
+</body>
+</html>

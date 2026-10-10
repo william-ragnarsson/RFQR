@@ -1,5 +1,5 @@
 import { FileText, ShieldCheck } from "lucide-react";
-import { ORDER_TEMPLATE, countFound } from "@/lib/mock-run";
+import { ORDER_TEMPLATE, countFound } from "@/lib/rules";
 import { modelInfo } from "@/lib/models";
 import type { ExtractorResult } from "@/lib/types";
 import { Note, Quote, SectionTitle, formatSeconds, formatValue } from "./shared";

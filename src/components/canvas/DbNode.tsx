@@ -1,6 +1,6 @@
 import { Handle, Position, type Node } from "@xyflow/react";
 import { Database } from "lucide-react";
-import { STOCK } from "@/lib/mock-run";
+import { STOCK } from "@/lib/rules";
 import { nodeState, useRunContext } from "./run-context";
 import { diamondHandle } from "./WorkflowNode";
 

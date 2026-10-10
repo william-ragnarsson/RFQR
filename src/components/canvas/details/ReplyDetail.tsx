@@ -1,5 +1,5 @@
 import { CircleCheck, Send, ShieldCheck } from "lucide-react";
-import { OUTCOME_LABELS } from "@/lib/mock-run";
+import { OUTCOME_LABELS } from "@/lib/rules";
 import type { Outcome, ReplyDraft } from "@/lib/types";
 import { Note, SectionTitle, formatTime } from "./shared";
 

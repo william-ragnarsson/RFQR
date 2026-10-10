@@ -1,5 +1,5 @@
 import { CircleCheck, Code, TriangleAlert } from "lucide-react";
-import { ORDER_TEMPLATE } from "@/lib/mock-run";
+import { ORDER_TEMPLATE } from "@/lib/rules";
 import type { FieldStatus, FilledField, FilledForm } from "@/lib/types";
 import { Note, Quote, SourceChip, formatValue } from "./shared";
 

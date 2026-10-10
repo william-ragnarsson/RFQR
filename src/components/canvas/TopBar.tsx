@@ -1,5 +1,5 @@
-import { ChevronDown, LoaderCircle, Play, Workflow } from "lucide-react";
-import { RFQ_INBOX } from "@/lib/mock-run";
+import { ArrowLeft, ChevronDown, LoaderCircle, Play, Workflow } from "lucide-react";
+import { RFQ_INBOX } from "@/lib/rules";
 
 interface TopBarProps {
   scenarios: { id: string; title: string }[];
@@ -13,6 +13,16 @@ export function TopBar({ scenarios, scenarioId, onScenarioChange, onSimulate, bu
   return (
     <header className="flex h-14 shrink-0 items-center justify-between gap-4 border-b border-gray-200 bg-white px-4">
       <div className="flex min-w-0 items-center gap-2.5">
+        {/* Static page in public/, so a plain <a> rather than next/link. */}
+        <a
+          href="/rudco.html"
+          title="Back to the RudCo platform page"
+          className="-ml-1.5 flex shrink-0 items-center gap-1 rounded-md px-1.5 py-1 text-sm text-gray-500 hover:bg-gray-50 hover:text-gray-900"
+        >
+          <ArrowLeft size={14} />
+          RudCo
+        </a>
+        <span className="text-gray-300">/</span>
         <span className="flex size-7 shrink-0 items-center justify-center rounded-lg bg-gray-900 text-white">
           <Workflow size={16} strokeWidth={2} />
         </span>

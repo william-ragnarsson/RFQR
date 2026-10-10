@@ -6,6 +6,7 @@
       "title": "Complete and in stock",
       "expectedOutcome": "confirmed",
       "email": {
+        "from": "Laura Chen <laura.chen@ridgewayfab.example>",
         "subject": "RFQ - 304 stainless sheets",
         "body": "Hi Thomas,\n\nWe'd like to order 40 sheets of 304 stainless. The full material specification is in the attached PDF.\n\nCould you confirm availability and price?\n\nKind regards,\nLaura Chen\nPurchasing, Ridgeway Fabrication"
       },
@@ -34,6 +35,7 @@
       "title": "Missing thickness and finish",
       "expectedOutcome": "clarify",
       "email": {
+        "from": "Mark Davies <mark@daviesmarine.example>",
         "subject": "RFQ - 304 sheet",
         "body": "Hello,\n\nPlease quote 25 sheets of 304 sheet per the attached spec.\n\nThanks,\nMark Davies\nDavies Marine Works"
       },
@@ -59,6 +61,7 @@
       "title": "More than we have in stock",
       "expectedOutcome": "unavailable",
       "email": {
+        "from": "Priya Nair <p.nair@coastalfood.example>",
         "subject": "RFQ - 316L sheets for new line",
         "body": "Hi Thomas,\n\nWe need 200 sheets of 316L for a new food-processing line. Spec attached. Delivery within two weeks if possible.\n\nBest,\nPriya Nair\nHead of Procurement, Coastal Food Equipment"
       },

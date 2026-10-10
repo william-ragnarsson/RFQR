@@ -7,7 +7,10 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "demo:pdfs": "tsx scripts/make-demo-pdfs.ts"
+    "demo:pdfs": "tsx scripts/make-demo-pdfs.ts",
+    "demo:local": "tsx --env-file-if-exists=.env.local scripts/run-local.ts",
+    "gmail:check": "tsx --env-file-if-exists=.env.local scripts/gmail-check.ts",
+    "watch": "tsx --env-file-if-exists=.env.local scripts/watch.ts"
   },
   "dependencies": {
     "@xyflow/react": "12.12.0",

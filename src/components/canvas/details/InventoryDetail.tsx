@@ -1,5 +1,5 @@
 import { CircleCheck, CircleSlash, Code, TriangleAlert } from "lucide-react";
-import { STOCK, formatMoney } from "@/lib/mock-run";
+import { STOCK, formatMoney } from "@/lib/rules";
 import type { InventoryResult } from "@/lib/types";
 import { Note, SectionTitle } from "./shared";
 
