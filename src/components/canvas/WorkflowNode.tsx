@@ -12,7 +12,7 @@ export type WorkflowNodeType = Node<Record<string, never>, "workflow">;
 
 // React Flow's stylesheet is unlayered, so it beats Tailwind utilities on the
 // handles; inline styles keep the handle shapes predictable.
-const INPUT_HANDLE: CSSProperties = {
+export const INPUT_HANDLE: CSSProperties = {
   width: 8,
   height: 16,
   borderRadius: 2,
@@ -20,7 +20,7 @@ const INPUT_HANDLE: CSSProperties = {
   border: "none",
 };
 
-const OUTPUT_HANDLE: CSSProperties = {
+export const OUTPUT_HANDLE: CSSProperties = {
   width: 11,
   height: 11,
   borderRadius: "9999px",

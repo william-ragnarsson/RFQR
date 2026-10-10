@@ -1,8 +1,11 @@
 import { createContext, useContext } from "react";
 import type { NodeId, NodeState, RunState } from "@/lib/types";
 
-/** What can be open in the detail drawer: a pipeline node or the stock DB. */
-export type Selection = NodeId | "db";
+/** Inputs and file types drawn on the canvas to show the roadmap; never part of a run. */
+export type RoadmapId = "slack" | "teams" | "upload" | "excel" | "image";
+
+/** What can be open in the detail drawer: a pipeline node, the stock DB or a roadmap node. */
+export type Selection = NodeId | "db" | RoadmapId;
 
 interface RunContextValue {
   run: RunState | null;
