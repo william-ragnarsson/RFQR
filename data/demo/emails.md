@@ -9,7 +9,7 @@ During the demo, a friend sends an RFQ from their own email account and RFQR ans
 - Attach the PDF named in the scenario. William sends you the three PDFs beforehand (they are in `data/demo/pdfs/` in the repo).
 - Paste the body exactly as written, including the company line in the signature. RFQR reads the customer's company from the email and the PDF.
 - Turn off your email signature for these emails. A second company name in the email can make RFQR ask which company the order is for.
-- Send each email only after `npm run watch` is running. RFQR ignores mail that arrived before it started.
+- Send each email only after William has the RFQR page open (http://localhost:3000, green "Watching" badge). RFQR ignores mail that arrived before it started.
 - The reply goes to your address and starts with "Hi" plus the first name on your email account. If your account has no display name, it starts with "Hi there".
 - If nothing happens within a minute, William checks his **Spam** folder. RFQR never reads Spam, so a message there has to be marked "Not spam" and sent again.
 
@@ -71,7 +71,8 @@ Head of Procurement, Coastal Food Equipment
 
 ## Running it (William)
 
-1. `npm run gmail:check`: checks that the Gmail token works and shows the RFQ address.
-2. `npm run watch`: start it before your friend sends anything. Each new RFQ prints the run step by step, then the order form, the stock check and the reply draft.
-3. At `Send this reply to …? [y/N]`, type `y` and press Enter to send. Anything else, including just Enter, means nothing is sent.
-4. Press Ctrl+C to stop. To rehearse without sending anything, run `npm run watch -- --dry-run`.
+1. `npm run dev`, then open http://localhost:3000 and wait for the green "Watching william.ragnarsson+rfq@gmail.com" badge. Gmail watching starts when the page first opens.
+2. When the email arrives, the canvas runs through the nodes on its own.
+3. Click **Reply to buyer**, read the draft, then click **Approve & send email**. Nothing is sent before that click.
+4. To rehearse without sending, put `RFQR_DRY_RUN=1` in `.env.local` and restart `npm run dev`. Remove it before the real demo.
+5. Don't run `npm run watch` at the same time (the terminal version): every RFQ would get two drafts.

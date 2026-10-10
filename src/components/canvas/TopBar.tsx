@@ -1,4 +1,5 @@
 import { ArrowLeft, ChevronDown, LoaderCircle, Play, Workflow } from "lucide-react";
+import type { LiveStatus } from "@/lib/live-types";
 import { RFQ_INBOX } from "@/lib/rules";
 
 interface TopBarProps {
@@ -7,9 +8,12 @@ interface TopBarProps {
   onScenarioChange: (id: string) => void;
   onSimulate: () => void;
   busy: boolean;
+  live: LiveStatus | null;
 }
 
-export function TopBar({ scenarios, scenarioId, onScenarioChange, onSimulate, busy }: TopBarProps) {
+export function TopBar({ scenarios, scenarioId, onScenarioChange, onSimulate, busy, live }: TopBarProps) {
+  const watching = live?.state === "watching";
+  const failed = live?.state === "error";
   return (
     <header className="flex h-14 shrink-0 items-center justify-between gap-4 border-b border-gray-200 bg-white px-4">
       <div className="flex min-w-0 items-center gap-2.5">
@@ -32,12 +36,31 @@ export function TopBar({ scenarios, scenarioId, onScenarioChange, onSimulate, bu
       </div>
 
       <div className="flex shrink-0 items-center gap-3">
-        <span className="hidden items-center gap-2 rounded-full border border-green-200 bg-green-50 px-3 py-1 text-xs text-green-800 lg:inline-flex">
+        <span
+          title={failed ? live.message : undefined}
+          className={`hidden items-center gap-2 rounded-full border px-3 py-1 text-xs lg:inline-flex ${
+            watching
+              ? "border-green-200 bg-green-50 text-green-800"
+              : failed
+                ? "border-red-200 bg-red-50 text-red-800"
+                : "border-gray-200 bg-gray-50 text-gray-600"
+          }`}
+        >
           <span className="relative flex size-2">
-            <span className="absolute inline-flex size-full animate-ping rounded-full bg-green-400 opacity-75" />
-            <span className="relative inline-flex size-2 rounded-full bg-green-500" />
+            {watching && (
+              <span className="absolute inline-flex size-full animate-ping rounded-full bg-green-400 opacity-75" />
+            )}
+            <span
+              className={`relative inline-flex size-2 rounded-full ${
+                watching ? "bg-green-500" : failed ? "bg-red-500" : "bg-gray-400"
+              }`}
+            />
           </span>
-          Watching {RFQ_INBOX}
+          {watching
+            ? `Watching ${RFQ_INBOX}${live.dryRun ? " (dry run)" : ""}`
+            : failed
+              ? `Gmail offline: ${live.message}`
+              : "Connecting to Gmail…"}
         </span>
 
         <label htmlFor="demo-scenario" className="hidden text-xs text-gray-400 sm:block">

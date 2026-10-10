@@ -16,10 +16,12 @@ interface DetailPanelProps {
   selected: Selection;
   run: RunState | null;
   onClose: () => void;
-  onApprove: () => void;
+  onApprove: () => Promise<void>;
+  live: boolean;
+  sendError: string | null;
 }
 
-export function DetailPanel({ selected, run, onClose, onApprove }: DetailPanelProps) {
+export function DetailPanel({ selected, run, onClose, onApprove, live, sendError }: DetailPanelProps) {
   const meta = NODE_META[selected];
   const model = meta.model ? MODELS[meta.model] : null;
   const state = isNodeId(selected) ? nodeState(run, selected) : null;
@@ -52,7 +54,12 @@ export function DetailPanel({ selected, run, onClose, onApprove }: DetailPanelPr
       </header>
 
       <div className="min-h-0 flex-1 overflow-y-auto px-5 py-5">
-        <PanelBody selected={selected} run={run} onApprove={onApprove} />
+        {run?.error && (isNodeId(selected) ? run.error.node === selected : false) && (
+          <div className="mb-4 rounded-lg border border-red-200 bg-red-50 p-3 text-sm text-red-800">
+            {run.error.message}
+          </div>
+        )}
+        <PanelBody selected={selected} run={run} onApprove={onApprove} live={live} sendError={sendError} />
       </div>
     </aside>
   );
@@ -62,7 +69,9 @@ function PanelBody({
   selected,
   run,
   onApprove,
-}: Pick<DetailPanelProps, "selected" | "run" | "onApprove">): ReactNode {
+  live,
+  sendError,
+}: Pick<DetailPanelProps, "selected" | "run" | "onApprove" | "live" | "sendError">): ReactNode {
   if (selected === "db") {
     return <StockDetail matchedSku={run?.inventory?.match?.sku ?? null} />;
   }
@@ -94,7 +103,7 @@ function PanelBody({
       if (status === "skipped") return <InventorySkipped missing={run?.form?.missing ?? []} />;
       break;
     case "reply":
-      if (run?.reply) return <ReplyDetail reply={run.reply} onApprove={onApprove} />;
+      if (run?.reply) return <ReplyDetail reply={run.reply} onApprove={onApprove} live={live} sendError={sendError} />;
       break;
   }
 

@@ -1,4 +1,5 @@
-import { CircleCheck, Send, ShieldCheck } from "lucide-react";
+import { CircleCheck, LoaderCircle, Send, ShieldCheck } from "lucide-react";
+import { useState } from "react";
 import { OUTCOME_LABELS } from "@/lib/rules";
 import type { Outcome, ReplyDraft } from "@/lib/types";
 import { Note, SectionTitle, formatTime } from "./shared";
@@ -11,11 +12,22 @@ const OUTCOME_STYLE: Record<Outcome, string> = {
 
 interface ReplyDetailProps {
   reply: ReplyDraft & { sentAt?: string };
-  onApprove: () => void;
+  onApprove: () => Promise<void>;
+  live: boolean;
+  sendError: string | null;
 }
 
-export function ReplyDetail({ reply, onApprove }: ReplyDetailProps) {
+export function ReplyDetail({ reply, onApprove, live, sendError }: ReplyDetailProps) {
   const sent = Boolean(reply.sentAt);
+  const [sending, setSending] = useState(false);
+  const click = async () => {
+    setSending(true);
+    try {
+      await onApprove();
+    } finally {
+      setSending(false);
+    }
+  };
 
   return (
     <div className="space-y-5">
@@ -52,16 +64,28 @@ export function ReplyDetail({ reply, onApprove }: ReplyDetailProps) {
       <div className="space-y-2">
         <button
           type="button"
-          onClick={onApprove}
-          disabled={sent}
+          onClick={click}
+          disabled={sent || sending}
           className="inline-flex h-10 w-full items-center justify-center gap-2 rounded-lg bg-gray-900 text-sm font-medium text-white hover:bg-gray-800 focus-visible:ring-2 focus-visible:ring-indigo-300 focus-visible:outline-none disabled:cursor-default disabled:bg-gray-200 disabled:text-gray-500"
         >
-          {sent ? <CircleCheck size={16} /> : <Send size={16} />}
-          {sent ? "Sent" : "Approve & send"}
+          {sent ? (
+            <CircleCheck size={16} />
+          ) : sending ? (
+            <LoaderCircle size={16} className="animate-spin" />
+          ) : (
+            <Send size={16} />
+          )}
+          {sent ? "Sent" : sending ? "Sending…" : live ? "Approve & send email" : "Approve & send"}
         </button>
+        {sendError && (
+          <p className="rounded-lg border border-red-200 bg-red-50 p-2.5 text-sm text-red-800">{sendError}</p>
+        )}
         <Note icon={<ShieldCheck size={14} />}>
           Nothing is sent until you approve. The draft is written by plain code from the checked
-          form and the stock result. (Demo run: approving only marks it as sent.)
+          form and the stock result.{" "}
+          {live
+            ? `Approving sends this email from Gmail to ${reply.to}.`
+            : "(Simulated run: approving only marks it as sent.)"}
         </Note>
       </div>
     </div>

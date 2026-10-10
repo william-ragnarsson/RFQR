@@ -14,6 +14,7 @@ import {
   type NodeTypes,
 } from "@xyflow/react";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { LIVE_RUN_PREFIX, type LiveEvent, type LiveStatus } from "@/lib/live-types";
 import { DEMO_SCENARIOS, approveMockReply, simulateRun } from "@/lib/mock-run";
 import { NODE_IDS, type NodeId, type NodeStatus, type RunState } from "@/lib/types";
 import { DbNode, type DbNodeType } from "./DbNode";
@@ -113,12 +114,36 @@ export function WorkflowCanvas() {
   const [selected, setSelected] = useState<Selection | null>(null);
   const [scenarioId, setScenarioId] = useState(DEMO_SCENARIOS[0].id);
   const cancelRef = useRef<(() => void) | null>(null);
+  const [live, setLive] = useState<LiveStatus | null>(null);
+  const [sendError, setSendError] = useState<string | null>(null);
+
+  // The real pipeline: the server watches Gmail and streams every run update here.
+  // A real RFQ takes over the canvas (and stops a simulation that was playing).
+  useEffect(() => {
+    const source = new EventSource("/api/live");
+    let lastRunId: string | null = null;
+    source.onmessage = (msg) => {
+      const e = JSON.parse(msg.data) as LiveEvent;
+      if (e.type === "status") return setLive(e.status);
+      if (e.run.id !== lastRunId) {
+        lastRunId = e.run.id;
+        cancelRef.current?.();
+        cancelRef.current = null;
+        setSendError(null);
+      }
+      setRun(e.run);
+    };
+    return () => source.close();
+  }, []);
 
   const edges = useMemo(() => buildEdges(run), [run]);
+  // Real Gmail runs are approved through the server; simulated ones only locally.
+  const isLiveRun = run?.id.startsWith(LIVE_RUN_PREFIX) ?? false;
   const busy = run !== null && NODE_IDS.some((id) => run.nodes[id].status === "running");
 
   const simulate = useCallback(() => {
     cancelRef.current?.();
+    setSendError(null);
     cancelRef.current = simulateRun(scenarioId, setRun);
   }, [scenarioId]);
 
@@ -130,10 +155,26 @@ export function WorkflowCanvas() {
     setRun(null);
   }, []);
 
-  const approve = useCallback(() => {
-    const sentAt = new Date().toISOString();
-    setRun((r) => (r ? approveMockReply(r, sentAt) : r));
-  }, []);
+  const approve = useCallback(async () => {
+    if (!run) return;
+    if (!isLiveRun) {
+      setRun((r) => (r ? approveMockReply(r, new Date().toISOString()) : r));
+      return;
+    }
+    setSendError(null);
+    try {
+      const res = await fetch("/api/live/approve", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ runId: run.id }),
+      });
+      const data = (await res.json()) as { run?: RunState; error?: string };
+      if (!res.ok || !data.run) throw new Error(data.error ?? `HTTP ${res.status}`);
+      setRun(data.run);
+    } catch (err) {
+      setSendError(`Not sent: ${err instanceof Error ? err.message : String(err)}`);
+    }
+  }, [run, isLiveRun]);
 
   // Stop the timers if the canvas unmounts mid-run.
   useEffect(() => {
@@ -159,6 +200,7 @@ export function WorkflowCanvas() {
         onScenarioChange={changeScenario}
         onSimulate={simulate}
         busy={busy}
+        live={live}
       />
       <main className="relative flex min-h-0 flex-1">
         <RunContext.Provider value={context}>
@@ -196,6 +238,8 @@ export function WorkflowCanvas() {
               run={run}
               onClose={() => setSelected(null)}
               onApprove={approve}
+              live={isLiveRun}
+              sendError={sendError}
             />
           )}
         </RunContext.Provider>
